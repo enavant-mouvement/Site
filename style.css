@@ -1,33 +1,62 @@
 /* style.css */
 
+/* TODO: Définir les palettes de couleurs pour les modes clair et sombre */
+:root {
+    /* Couleurs du mode clair (par défaut) */
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --header-footer-bg: #ADD8E6; /* Bleu clair */
+    --card-bg: #fff;
+    --program-card-bg: #8A2BE2; /* Violet */
+    --primary-color: #007bff; /* Bleu primaire */
+    --border-color: #ccc;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    /* Couleurs du mode sombre */
+    --background-color: #1a1a1a;
+    --text-color: #e0e0e0;
+    --header-footer-bg: #333; /* Gris foncé pour le header/footer en mode sombre */
+    --card-bg: #2a2a2a;
+    --program-card-bg: #6a0dad; /* Violet plus foncé */
+    --primary-color: #90CAF9; /* Bleu clair pour le primaire en mode sombre */
+    --border-color: #555;
+    --shadow-color: rgba(255, 255, 255, 0.1);
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
+    /* Utilisation des variables CSS */
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transition douce pour le changement de mode */
 }
 
 .header {
-    background-color: #ADD8E6; /* TODO: Choisir une couleur de fond définitive pour le header */
+    background-color: var(--header-footer-bg); /* TODO: Choisir une couleur de fond définitive pour le header */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .logo-placeholder {
     /* TODO: Remplacer ce div par une balise <img> avec le vrai logo */
     width: 150px; /* Taille approximative du logo */
     height: 40px;
-    background-color: #ccc; /* Couleur de placeholder */
+    background-color: var(--border-color); /* Couleur de placeholder */
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #666;
+    color: var(--text-color);
     font-weight: bold;
     font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-menu ul {
@@ -44,36 +73,39 @@ body {
 
 .nav-menu ul li a {
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-weight: bold;
     padding: 5px 0;
     transition: color 0.3s ease;
 }
 
 .nav-menu ul li a:hover {
-    color: #007bff; /* TODO: Choisir une couleur de survol pour les liens du menu */
+    color: var(--primary-color); /* TODO: Choisir une couleur de survol pour les liens du menu */
 }
 
 .nav-menu ul li.active a {
-    color: #007bff; /* TODO: Choisir une couleur pour la page active dans le menu */
+    color: var(--primary-color); /* TODO: Choisir une couleur pour la page active dans le menu */
 }
 
-.search-icon {
+.search-icon, .dark-mode-toggle {
     margin-left: 20px;
     font-size: 1.2em;
     cursor: pointer;
+    color: var(--text-color); /* S'assure que les icônes changent de couleur */
+    transition: color 0.3s ease;
 }
 
 .login-link {
     margin-left: 20px;
     text-decoration: none;
-    color: #333;
+    color: var(--text-color);
     font-weight: bold;
 }
 
 .hero-banner {
-    /* TODO: Remplacer cette image de placeholder par l'image de bannière réelle */
-    background-color: #e0e0e0; /* Couleur de placeholder */
+    /* TODO: Remplacer cette image de placeholder par l'image de bannière réelle (mode clair) */
+    /* La couleur de fond est ici une couleur de secours si l'image ne charge pas, et non la couleur de base */
+    background-color: #e0e0e0; /* Couleur de placeholder pour le banner */
     height: 350px; /* Hauteur du banner */
     display: flex;
     justify-content: center;
@@ -81,44 +113,48 @@ body {
     background-image: url('https://via.placeholder.com/1500x350/ADD8E6/000000?text=Header+Image'); /* Placeholder d'image */
     background-size: cover;
     background-position: center;
-    color: white;
+    color: white; /* Le texte sur l'image reste blanc */
     font-size: 3em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     position: relative;
 }
 
-.banner-content {
-    text-align: center;
+body.dark-mode .hero-banner {
+    /* TODO: Si une image de bannière spécifique pour le mode sombre existe, la mettre ici. Ex: url('assets/images/header_image_dark.jpg') */
+    /* background-image: url('https://via.placeholder.com/1500x350/333/FFFFFF?text=Header+Image+Dark'); */
+    /* Optionnel: Assombrir l'image existante si pas de version sombre dédiée */
+    filter: brightness(0.7);
+    transition: filter 0.3s ease;
 }
 
-.banner-content h1 {
-    margin-bottom: 10px;
-}
 
 .main-content {
     padding: 40px 20px;
     max-width: 1200px;
     margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: var(--card-bg);
+    box-shadow: 0 0 10px var(--shadow-color);
     border-radius: 8px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .section-title {
     text-align: center;
     margin-bottom: 30px;
-    color: #007bff; /* TODO: Choisir une couleur pour les titres de section */
+    color: var(--primary-color); /* TODO: Choisir une couleur pour les titres de section */
+    transition: color 0.3s ease;
 }
 
 .program-card {
-    background-color: #8A2BE2; /* TODO: Choisir une couleur de fond définitive pour la carte de programme */
-    color: white;
+    background-color: var(--program-card-bg); /* TODO: Choisir une couleur de fond définitive pour la carte de programme */
+    color: white; /* Le texte sur la carte de programme reste blanc */
     padding: 30px;
     margin: 0 auto;
     max-width: 600px;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .program-card h2 {
@@ -131,14 +167,36 @@ body {
     line-height: 1.6;
 }
 
+.program-card button {
+    background-color: var(--primary-color); /* Couleur du bouton basée sur la couleur primaire */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.program-card button:hover {
+    /* TODO: Ajuster la couleur de survol. La fonction darken n'est pas CSS natif, à remplacer par une couleur hex précise */
+    background-color: #0056b3; /* Exemple pour le mode clair */
+}
+body.dark-mode .program-card button:hover {
+    background-color: #5a0a9c; /* Exemple pour le mode sombre */
+}
+
+
 .person-card {
     display: flex;
     align-items: center;
     margin-bottom: 30px;
-    border: 1px solid #eee;
+    border: 1px solid var(--border-color);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    background-color: var(--card-bg);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
 .person-card img {
@@ -148,21 +206,48 @@ body {
     border-radius: 50%;
     object-fit: cover;
     margin-right: 20px;
-    border: 3px solid #007bff; /* TODO: Choisir une couleur de bordure pour les photos des personnes */
+    border: 3px solid var(--primary-color); /* TODO: Choisir une couleur de bordure pour les photos des personnes */
+    transition: border-color 0.3s ease;
 }
 
 .person-card .info h3 {
     margin-top: 0;
-    color: #007bff; /* TODO: Choisir une couleur pour les noms des personnes */
+    color: var(--primary-color); /* TODO: Choisir une couleur pour les noms des personnes */
+    transition: color 0.3s ease;
 }
 
+.person-card .info a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+/* Styles pour les sections d'actualités ou de messages */
+.main-content > section > div > div { /* Cible les cartes d'actualités/discours */
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.main-content > section > div > div img {
+    /* TODO: S'assurer que les images des actualités ont un bon contraste en mode sombre ou fournir des alternatives */
+    filter: grayscale(10%) contrast(100%); /* Exemple d'ajustement léger en mode clair */
+    transition: filter 0.3s ease;
+}
+
+body.dark-mode .main-content > section > div > div img {
+    filter: grayscale(20%) brightness(0.8); /* Exemple d'ajustement plus prononcé en mode sombre */
+}
+
+
 .footer {
-    background-color: #ADD8E6; /* TODO: Choisir une couleur de fond définitive pour le footer */
-    color: #333;
+    background-color: var(--header-footer-bg); /* TODO: Choisir une couleur de fond définitive pour le footer */
+    color: var(--text-color);
     text-align: center;
     padding: 20px;
-    border-top: 1px solid #ccc;
+    border-top: 1px solid var(--border-color);
     font-size: 0.9em;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* Responsive adjustments */
