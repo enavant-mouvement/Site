@@ -1,0 +1,190 @@
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.header {
+    background-color: #ADD8E6; /* Bleu clair pour le header */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo-placeholder {
+    width: 150px; /* Taille approximative du logo */
+    height: 40px;
+    background-color: #ccc; /* Couleur de placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #666;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.nav-menu ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.nav-menu ul li {
+    margin-left: 20px;
+}
+
+.nav-menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+}
+
+.nav-menu ul li a:hover {
+    color: #007bff;
+}
+
+.nav-menu ul li.active a {
+    color: #007bff; /* Mettre en évidence la page active */
+}
+
+.search-icon {
+    margin-left: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.login-link {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.hero-banner {
+    background-color: #e0e0e0; /* Couleur de placeholder pour le banner */
+    height: 350px; /* Hauteur du banner */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://via.placeholder.com/1500x350/ADD8E6/000000?text=Header+Image'); /* Placeholder d'image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.banner-content {
+    text-align: center;
+}
+
+.banner-content h1 {
+    margin-bottom: 10px;
+}
+
+.main-content {
+    padding: 40px 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #007bff;
+}
+
+.program-card {
+    background-color: #8A2BE2; /* Violet pour la carte de programme */
+    color: white;
+    padding: 30px;
+    margin: 0 auto;
+    max-width: 600px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.program-card h2 {
+    margin-top: 0;
+    font-size: 2em;
+}
+
+.program-card p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.person-card {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.person-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    border: 3px solid #007bff;
+}
+
+.person-card .info h3 {
+    margin-top: 0;
+    color: #007bff;
+}
+
+.footer {
+    background-color: #ADD8E6; /* Bleu clair pour le footer */
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .nav-menu ul {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+    .nav-menu ul li {
+        margin: 5px 0;
+    }
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .hero-banner {
+        font-size: 2em;
+        height: 250px;
+    }
+    .person-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .person-card img {
+        margin: 0 0 15px 0;
+    }
+}
